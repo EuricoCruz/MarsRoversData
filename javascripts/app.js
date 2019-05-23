@@ -5,8 +5,8 @@
 
 var rover = {
   direction: "N",
-  x = 0;
-  y = 0;
+  x: 0,
+  y: 0
 }
 
 function turnLeft(rover){
@@ -47,7 +47,22 @@ function turnRight(rover){
 }
 
 function moveForward(rover){
-  console.log("moveForward was called")
+  console.log("moveForward was called");
+  switch(rover.direction){
+    case "N":
+      rover.y -= 1
+      break;
+    case "S":
+      rover.y += 1
+      break;
+    case "E":
+      rover.x -= 1
+      break;
+    case "W":
+      rover.x += 1
+      break;       
+  }
+  console.log(rover.x, rover.y);
 }
 
 var grid = [
