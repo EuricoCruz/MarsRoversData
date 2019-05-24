@@ -9,7 +9,7 @@ var rover = {
   y: 0
 }
 
-function turnLeft(rover){
+function turnLeft(){
   console.log("turnLeft was called!");
   switch(rover.direction) {
   case "N": 
@@ -27,7 +27,7 @@ function turnLeft(rover){
   }
 }
 
-function turnRight(rover){
+function turnRight(){
   console.log("turnRight was called!");
   switch(rover.direction) {
     case "N": 
@@ -46,7 +46,7 @@ function turnRight(rover){
   }
 }
 
-function moveForward(rover){
+function moveForward(){
   console.log("moveForward was called");
   switch(rover.direction){
     case "N":
@@ -63,6 +63,20 @@ function moveForward(rover){
       break;       
   }
   console.log(rover.x, rover.y);
+}
+
+function sequenceCommands(order) {
+  for(var i = 0; i < order.length; i++){
+    if(order[i] === "f"){
+      moveForward(rover);
+    } if(order[i] === "l"){
+      turnLeft();
+    } if(order[i] === "r") {
+        turnRight();
+    } else {
+      alert("please, enter a valid paramenter: 'l', 'r' or 'f'"); 
+    }
+  }
 }
 
 var grid = [
