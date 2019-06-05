@@ -68,7 +68,7 @@ function checkObstacle() {
     console.log('you will crash your rovers')
     problem = true;
   }
-  if (count === 1 && rover.x === jupiter.x && jupiter.y == venus.y) {
+  if (count === 2 && rover.x === jupiter.x && jupiter.y == venus.y) {
     console.log('you will crash your rovers')
     problem = true;
   }
