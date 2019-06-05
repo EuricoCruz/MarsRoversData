@@ -4,12 +4,28 @@
 
 // ======================
 
-const rover = {
+let apolo = {
   direction: 'N',
   x: 0,
   y: 0,
   travelLog: [],
 };
+
+let jupiter = {
+  direction: 'W',
+  x: 5,
+  y: 9,
+  travelLog: [],
+};
+
+let venus = {
+  direction: 'N',
+  x: 9,
+  y: 0,
+  travelLog: [],
+};
+let count = 0;
+let rover = apolo;
 
 const obstacle = [{ name: 'hole', x: 5, y: 4 }, { name: 'alien', x: 6, y: 7 }, { name: 'lava', x: 3, y: 9 }];
 
@@ -50,6 +66,7 @@ function turnRight() {
 }
 
 function moveForward() {
+  checkRoverTurn();
   console.log('moveForward was called');
   let oldX = rover.x;
   let oldY = rover.y; 
@@ -82,17 +99,19 @@ function moveForward() {
         console.log('You will die if you continue');
       }
       break;
-  
   }
-  if(checkObstacle()) {
+  if(checkObstacle(rover)) {
     console.log("entrou no if");
     rover.x = oldX;
-    rover.y = oldY;
+     rover.y = oldY;
   };
-}
+  count += 1;
+};
 
 function moveBackward() {
+  checkRoverTurn();
   console.log('moveBackward was called');
+  checkRoverTurn();
   let oldX = rover.x;
   let oldY = rover.y; 
   switch (rover.direction) {
@@ -129,13 +148,14 @@ function moveBackward() {
     rover.x = oldX;
     rover.y = oldY;
   };
-}
+  count += 1;
+};
 
 function sequenceCommands(order) {
   console.log('funcao invocada');
   for (let i = 0; i < order.length; i += 1) {
     if (order[i] === 'F') {
-      moveForward(rover);
+      moveForward();
     } else if (order[i] === 'L') {
       turnLeft();
     } else if (order[i] === 'R') {
@@ -171,4 +191,13 @@ function checkObstacle() {
   return problem; 
 };
 
-
+function checkRoverTurn() {
+  if(count === 1) { 
+    rover = jupiter;
+  } else if(count === 2) {
+    rover = venus
+  } else if(count === 3) {
+    count = 0;
+    rover = apolo;
+  }
+}
